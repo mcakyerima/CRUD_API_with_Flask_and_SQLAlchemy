@@ -1,9 +1,8 @@
-from app import app
-
 from app.models import db
+from app.models import ma
 
 class Product(db.Model):
-    id = db.Column(db.Interger, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
     description = db.Column(db.String(200))
     price = db.Column(db.Float)
@@ -15,4 +14,9 @@ class Product(db.Model):
         self.price = price
         self.qty = qty
 
-        
+class ProductSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'name', 'description', 'price', 'qty')
+
+product_schema = ProductSchema()
+products_schema = ProductSchema(many=True)

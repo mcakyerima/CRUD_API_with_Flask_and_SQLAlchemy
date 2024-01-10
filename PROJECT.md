@@ -85,6 +85,8 @@ project_root/
 
 This outline provides a professional and organized structure for THE Flask project, incorporating best practices for MVP architecture, unit testing, modularization, and testing conventions. 
 
+here is the prevous API implementation that we want to upgrade
+
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow

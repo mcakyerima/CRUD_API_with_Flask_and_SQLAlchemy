@@ -1,5 +1,6 @@
-from flask import Blueprint
+# # app/main_app/__init__.py
+# from flask import Blueprint
 
-main_app = Blueprint('main_app', __name__)
+# main_blueprint = Blueprint('main', __name__)
 
-from app.main_app import main_app
+# from . import app  # Importing app from the same directory
