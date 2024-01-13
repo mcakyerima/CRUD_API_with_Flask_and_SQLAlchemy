@@ -14,9 +14,9 @@ class Product(db.Model):
         self.price = price
         self.qty = qty
 
-class ProductSchema(ma.Schema):
+class ProductSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
-        fields = ('id', 'name', 'description', 'price', 'qty')
-
+        model = Product
+        
 product_schema = ProductSchema()
 products_schema = ProductSchema(many=True)

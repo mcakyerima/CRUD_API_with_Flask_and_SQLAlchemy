@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from flask import Flask
+from flask_jwt_extended import JWTManager
 from config import Config
 from app.models.product_model import db
 from app.views.product_views import product_blueprint
@@ -14,6 +15,7 @@ from app.views.product_views import product_blueprint
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+    jwt = JWTManager(app)
     db.init_app(app)
 
     # Register blueprints
@@ -27,7 +29,7 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-    
+
 # app = Flask(__name__)
 # app.config.from_object(Config)
 # db.init_app(app)
