@@ -10,17 +10,18 @@ from flask_jwt_extended import JWTManager
 from config import Config
 from app.models.product_model import db
 from app.views.product_views import product_blueprint
+from app.views.user_views import user_blueprint
 
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
-    jwt = JWTManager(app)
     db.init_app(app)
+    jwt = JWTManager(app)
 
     # Register blueprints
     app.register_blueprint(product_blueprint, url_prefix='/api')
-
+    app.register_blueprint(user_blueprint, url_prefix='/api/users')
     return app
 
 app = create_app()

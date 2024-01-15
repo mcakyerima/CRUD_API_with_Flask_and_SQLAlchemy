@@ -6,6 +6,7 @@ product_blueprint = Blueprint("product", __name__)
 
 
 @product_blueprint.route('/add_product', methods=['POST'])
+@jwt_required()
 def handle_create_products():
     return create_product()
 
@@ -20,7 +21,7 @@ def handle_product_by_id(product_id):
 
 @product_blueprint.route('/products/update/<int:product_id>', methods=['PUT', 'PATCH'])
 @jwt_required()
-def handle_product_product(product_id):
+def handle_update_product(product_id):
     try:
         data = request.json 
         if not data:
@@ -34,6 +35,7 @@ def handle_product_product(product_id):
     
 
 @product_blueprint.route('/products/delete/<int:product_id>', methods=['DELETE'])
+@jwt_required()
 def handle_delete_product(product_id):
     try:
         result = delete_product(product_id)
